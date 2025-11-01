@@ -1,5 +1,6 @@
 #include <cstddef>
 #include <iostream>
+#include <iomanip>
 
 void destroy(int ** mtx, size_t created)
 {
@@ -56,10 +57,9 @@ void output(int ** mtx, size_t rows, size_t cols)
 {
   for (size_t i = 0; i < rows; ++i)
   {
-    std::cout << mtx[i][0] << " ";
-    for (size_t j = 1; j < cols; ++j)
+    for (size_t j = 0; j < cols; ++j)
     {
-      std::cout << mtx[i][j] << " ";
+      std::cout <<std::setw(4) << mtx[i][j] << " ";
     }
     std::cout << "\n";
   }
