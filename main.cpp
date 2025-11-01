@@ -30,6 +30,17 @@ int ** create(size_t rows, size_t cols)
   return mtx;
 }
 
+void constract(int ** mtx, int init, size_t rows, size_t cols)
+{
+  for (size_t i = 0; i < rows; ++i)
+  {
+    for (size_t j = 0; j < cols; ++j)
+    {
+      mtx[i][j] = init;
+    }
+  }
+}
+
 int main()
 {
   int ** matrix = nullptr;
@@ -42,7 +53,9 @@ int main()
     std::cerr << e.what() << '\n';
     return 1;
   }
-  
-  matrix = create(5, 5);
+  std::cout << "created!\n";
+  constract(matrix, 2, 5, 5);
+  std::cout << matrix[0][0] << "\n";
+  destroy(matrix, 5);
 
 }
