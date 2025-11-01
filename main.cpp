@@ -32,5 +32,17 @@ int ** create(size_t rows, size_t cols)
 
 int main()
 {
+  int ** matrix = nullptr;
+  try
+  {
+    matrix = create(5, 5);
+  }
+  catch(const std::bad_alloc & e)
+  {
+    std::cerr << e.what() << '\n';
+    return 1;
+  }
   
+  matrix = create(5, 5);
+
 }
