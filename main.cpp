@@ -1,7 +1,14 @@
 #include <cstddef>
 #include <iostream>
 
-
+void destroy(int ** mtx, size_t created)
+{
+  for (size_t i = 0; i < created; ++i)
+  {
+    delete[] mtx[i];
+  }
+  delete[] mtx;
+}
 
 int ** create(size_t rows, size_t cols)
 {
@@ -16,7 +23,8 @@ int ** create(size_t rows, size_t cols)
   }
   catch(const std::bad_alloc & e)
   {
-    std::cerr << e.what() << '\n';
+    destroy(mtx, created);
+    return nullptr;
   }
   
   return mtx;
